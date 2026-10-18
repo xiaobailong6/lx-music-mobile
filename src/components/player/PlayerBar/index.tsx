@@ -7,7 +7,6 @@ import Title from './components/Title'
 import PlayInfo from './components/PlayInfo'
 import ControlBtn from './components/ControlBtn'
 import { createStyle } from '@/utils/tools'
-import LiquidGlassView from '@/components/common/LiquidGlassView'
 // import { useSettingValue } from '@/store/setting/hook'
 import { useTheme } from '@/store/theme/hook'
 import { useSettingValue } from '@/store/setting/hook'
@@ -20,7 +19,7 @@ export default memo(({ isHome = false }: { isHome?: boolean }) => {
   const autoHidePlayBar = useSettingValue('common.autoHidePlayBar')
 
   const playerComponent = useMemo(() => (
-    <LiquidGlassView style={styles.container} radius={6} blur={28}>
+    <View style={{ ...styles.container, backgroundColor: theme['c-content-background'] }}>
       <Pic isHome={isHome} />
       <View style={styles.center}>
         <Title isHome={isHome} />
@@ -32,7 +31,7 @@ export default memo(({ isHome = false }: { isHome?: boolean }) => {
       <View style={styles.right}>
         <ControlBtn />
       </View>
-    </LiquidGlassView>
+    </View>
   ), [theme, isHome])
 
   // console.log('render pb')

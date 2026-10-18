@@ -42,6 +42,11 @@ jobs:
             ./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a
           fi
 
+      - name: Get package version
+        shell: bash
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
       - name: Collect APK
         shell: bash
         run: |
@@ -52,6 +57,9 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: lx-music-mobile-arm64-v8a
-          path: android/app/build/outputs/apk/release/*arm64-v8a*.apk
+          # 产物名与 APK 文件名一致：从 run 页面下载解压后就是可直接安装的 .apk 文件
+          # compression-level 0：APK 本身已是压缩格式，不做二次压缩，按原文件存储
+          name: lx-music-mobile-v${{ env.PACKAGE_VERSION }}-arm64-v8a.apk
+          path: android/app/build/outputs/apk/release/lx-music-mobile-v${{ env.PACKAGE_VERSION }}-arm64-v8a.apk
           if-no-files-found: error
+          compression-level: 0
