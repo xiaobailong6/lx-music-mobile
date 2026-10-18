@@ -1,0 +1,57 @@
+name: Build arm64-v8a
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**'
+      - 'android/**'
+      - 'package.json'
+      - '.github/workflows/build-armv8.yml'
+
+jobs:
+  Android_arm64:
+    name: Android (arm64-v8a)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out git repository
+        uses: actions/checkout@v4
+
+      - name: Setup Env
+        uses: ./.github/actions/setup
+
+      - name: Build Packages (arm64-v8a only)
+        env:
+          DISABLE_SVG: 1
+        shell: bash
+        run: |
+          cd android
+          # 仅构建 arm64-v8a：通过 reactNativeArchitectures 属性过滤 ABI split
+          # 若仓库配置了签名 secrets 则签名构建，否则使用默认 debug 签名
+          if [ -n "${{ secrets.KEYSTORE_STORE_FILE_BASE64 }}" ]; then
+            echo "${{ secrets.KEYSTORE_STORE_FILE_BASE64 }}" | base64 --decode > app/${{ secrets.KEYSTORE_STORE_FILE }}
+            ./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a \
+              -PMYAPP_UPLOAD_STORE_FILE='${{ secrets.KEYSTORE_STORE_FILE }}' \
+              -PMYAPP_UPLOAD_KEY_ALIAS='${{ secrets.KEYSTORE_KEY_ALIAS }}' \
+              -PMYAPP_UPLOAD_STORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}' \
+              -PMYAPP_UPLOAD_KEY_PASSWORD='${{ secrets.KEYSTORE_KEY_PASSWORD }}'
+            rm -f app/${{ secrets.KEYSTORE_STORE_FILE }}
+          else
+            ./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a
+          fi
+
+      - name: Collect APK
+        shell: bash
+        run: |
+          cd android/app/build/outputs/apk/release
+          ls -la
+          md5sum *.apk || true
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lx-music-mobile-arm64-v8a
+          path: android/app/build/outputs/apk/release/*arm64-v8a*.apk
+          if-no-files-found: error

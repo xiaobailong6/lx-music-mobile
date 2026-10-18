@@ -2,6 +2,7 @@ import { useImperativeHandle, forwardRef, useMemo, useRef } from 'react'
 import { View, TouchableHighlight } from 'react-native'
 
 import Modal, { type ModalType } from './Modal'
+import LiquidGlassView from './LiquidGlassView'
 import { Icon } from '@/components/common/Icon'
 import { useKeyboard } from '@/utils/hooks'
 import { createStyle } from '@/utils/tools'
@@ -100,13 +101,13 @@ export default forwardRef<DialogType, DialogProps>(({
   return (
     <Modal onHide={onHide} keyHide={keyHide} bgHide={bgHide} bgColor="rgba(50,50,50,.3)" ref={modalRef}>
       <View style={{ ...styles.centeredView, paddingBottom: keyboardShown ? keyboardHeight : 0 }}>
-        <View style={{ ...styles.modalView, height, backgroundColor: theme['c-content-background'] }} onStartShouldSetResponder={() => true}>
+        <LiquidGlassView style={{ ...styles.modalView, height }} radius={4} onStartShouldSetResponder={() => true}>
           <View style={{ ...styles.header, backgroundColor: theme['c-primary-light-100-alpha-100'] }}>
             <Text style={styles.title} size={13} color={theme['c-primary-light-1000']} numberOfLines={1}>{title}</Text>
             {closeBtnComponent}
           </View>
           {children}
-        </View>
+        </LiquidGlassView>
       </View>
     </Modal>
   )

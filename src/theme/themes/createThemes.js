@@ -6,6 +6,24 @@ const { createThemeColors } = require('./utils')
 
 const defaultThemes = [
   {
+    id: 'liquid_glass',
+    name: '液态玻璃',
+    isDark: false,
+    config: {
+      primary: 'rgb(125, 145, 180)',
+      font: 'rgb(33, 33, 33)',
+      'c-app-background': 'rgba(255, 255, 255, 0)',
+      'c-main-background': 'rgba(255, 255, 255, 0.5)',
+      'bg-image': 'myzcbg.jpg',
+      'bg-image-position': 'center',
+      'bg-image-size': 'cover',
+
+      'c-badge-primary': 'var(c-primary)',
+      'c-badge-secondary': '#8fa8cc',
+      'c-badge-tertiary': '#a3b6d4',
+    },
+  },
+  {
     id: 'green',
     name: '绿意盎然',
     isDark: false,
@@ -303,7 +321,14 @@ const themes = defaultThemes.map(({ config: { primary, font, ...extInfo }, ...th
     isCustom: false,
     config: {
       themeColors: createThemeColors(primary, font, themeInfo.isDark),
-      extInfo,
+      // 液态玻璃化：所有内置主题的面层背景统一改为半透明，
+      // 配合壁纸透底形成整体玻璃质感（浅色 0.55 / 深色 0.45）
+      extInfo: {
+        ...extInfo,
+        'c-main-background': themeInfo.isDark
+          ? 'rgba(19, 19, 19, 0.45)'
+          : 'rgba(255, 255, 255, 0.55)',
+      },
     },
   }
 })
