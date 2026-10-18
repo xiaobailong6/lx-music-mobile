@@ -63,7 +63,8 @@ export const buildActiveThemeColors = (theme: LX.Theme): LX.ActiveTheme => {
 
   theme.config.extInfo = { ...theme.config.extInfo }
 
-  for (const [k, v] of Object.entries(theme.config.extInfo) as Array<[ExtInfoKey, LX.Theme['config']['extInfo'][ExtInfoKey]]>) {
+  // Object.entries 只会遍历实际存在的键，但 extInfo 含可选键（c-content-background）时值类型会带 undefined，这里断言回 string
+  for (const [k, v] of Object.entries(theme.config.extInfo) as Array<[ExtInfoKey, string]>) {
     if (!v.startsWith('var(')) continue
     theme.config.extInfo[k] = theme.config.themeColors[v.replace(varColorRxp, '$1') as ColorsKey]
   }
@@ -90,7 +91,9 @@ export const buildActiveThemeColors = (theme: LX.Theme): LX.ActiveTheme => {
     'c-button-background-hover': theme.config.themeColors['c-primary-light-300-alpha-600'],
     'c-button-background-active': theme.config.themeColors['c-primary-light-100-alpha-600'],
     'c-list-header-border-bottom': theme.config.themeColors['c-primary-alpha-900'],
-    'c-content-background': theme.config.themeColors['c-primary-light-1000'],
+    // 内容面板底色：允许主题在 extInfo 中显式指定（如“液态玻璃”主题的半透明玻璃色），
+    // 未指定的主题保持原有的不透明色，行为不变
+    'c-content-background': theme.config.extInfo['c-content-background'] ?? theme.config.themeColors['c-primary-light-1000'],
     'c-border-background': theme.config.themeColors['c-primary-light-100-alpha-700'],
     'bg-image': bgImg,
   } as const

@@ -5,6 +5,27 @@ const path = require('path')
 const { createThemeColors } = require('./utils')
 
 const defaultThemes = [
+  // 液态玻璃：仅此主题使用“半透明面板 + 壁纸透底”实现玻璃质感，其他主题不受影响。
+  // 想调玻璃浓度：改下面两个 alpha（0~1，越小越透），改完执行 npm run build:theme 重新生成
+  {
+    id: 'liquid_glass',
+    name: '液态玻璃',
+    isDark: false,
+    config: {
+      primary: 'rgb(125, 145, 180)',
+      font: 'rgb(33, 33, 33)',
+      'c-app-background': 'rgba(255, 255, 255, 0)',
+      'c-main-background': 'rgba(255, 255, 255, 0.6)',
+      'c-content-background': 'rgba(255, 255, 255, 0.85)',
+      'bg-image': 'myzcbg.jpg',
+      'bg-image-position': 'center',
+      'bg-image-size': 'cover',
+
+      'c-badge-primary': 'var(c-primary)',
+      'c-badge-secondary': '#8fa8cc',
+      'c-badge-tertiary': '#a3b6d4',
+    },
+  },
   {
     id: 'green',
     name: '绿意盎然',

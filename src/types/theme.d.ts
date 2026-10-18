@@ -300,6 +300,12 @@ declare global {
           'c-badge-primary': string
           'c-badge-secondary': string
           'c-badge-tertiary': string
+
+          /**
+           * 可选：主题专属的内容面板底色（如“液态玻璃”主题的半透明玻璃色）
+           * 未设置时沿用 themeColors 的 c-primary-light-1000（不透明），其他主题行为不变
+           */
+          'c-content-background'?: string
         }
       }
     }
