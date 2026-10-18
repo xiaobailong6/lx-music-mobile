@@ -11,6 +11,7 @@ import type { InitState } from '@/store/common/state'
 // import commonState from '@/store/common/state'
 import { exitApp, setNavActiveId } from '@/core/common'
 import Text from '@/components/common/Text'
+import GlassSurface from '@/components/common/Glass'
 import { useSettingValue } from '@/store/setting/hook'
 
 const styles = createStyle({
@@ -97,7 +98,6 @@ const MenuItem = ({ id, icon, onPress }: {
 }
 
 export default memo(() => {
-  const theme = useTheme()
   // console.log('render drawer nav')
   const showBackBtn = useSettingValue('common.showBackBtn')
   const showExitBtn = useSettingValue('common.showExitBtn')
@@ -124,7 +124,7 @@ export default memo(() => {
 
 
   return (
-    <View style={{ ...styles.container, backgroundColor: theme['c-content-background'] }}>
+    <GlassSurface style={styles.container} radius={0}>
       <Header />
       <ScrollView style={styles.menus}>
         <View style={styles.list}>
@@ -138,7 +138,7 @@ export default memo(() => {
       {
         showExitBtn ? <MenuItem id="nav_exit" icon="exit2" onPress={handlePress} /> : null
       }
-    </View>
+    </GlassSurface>
   )
 })
 

@@ -305,6 +305,22 @@ declare global {
            * 可选：主题专属的内容面板底色（如“液态玻璃”主题的半透明玻璃色）
            * 未设置时沿用 themeColors 的 c-primary-light-1000（不透明），其他主题行为不变
            */
+
+          /**
+           * 可选：是否启用液态玻璃材质（'1' 启用）。仅“液态玻璃”主题开启，
+           * 未开启的主题完全走原来的纯色渲染，外观不受影响
+           */
+          'ui-glass'?: string
+          /** 可选：玻璃底色（叠在模糊背景之上） */
+          'glass-tint'?: string
+          /** 可选：玻璃模糊半径（针对降采样位图） */
+          'glass-blur'?: string
+          /** 可选：顶部高光强度 0~1 */
+          'glass-highlight'?: string
+          /** 可选：边缘高光颜色 */
+          'glass-rim'?: string
+          /** 可选：内容区（列表所在层）的玻璃底色 */
+          'glass-content-tint'?: string
           'c-content-background'?: string
         }
       }

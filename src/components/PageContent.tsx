@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { useTheme } from '@/store/theme/hook'
 import ImageBackground from '@/components/common/ImageBackground'
@@ -8,6 +7,7 @@ import { scaleSizeAbsHR } from '@/utils/pixelRatio'
 import { defaultHeaders } from './common/Image'
 import SizeView from './SizeView'
 import { useBgPic } from '@/store/common/hook'
+import { GlassBackdropProvider } from './common/Glass'
 
 interface Props {
   children: React.ReactNode
@@ -70,10 +70,23 @@ export default ({ children }: Props) => {
     )
   }, [children, pic, theme, windowSize.height, windowSize.width])
 
+  // 液态玻璃：把壁纸信息下发给所有 GlassSurface，面板据此复制背景并做真实模糊
+  const glassBackdropSource = pic ? { uri: pic, headers: defaultHeaders } : theme['bg-image']
+  const glassEnabled = theme['ui-glass'] === '1'
+  const glassBlur = Number(theme['glass-blur'])
+
   return (
     <>
       <SizeView />
-      {pic ? picComponent : themeComponent}
+      <GlassBackdropProvider
+        enabled={glassEnabled}
+        source={glassBackdropSource}
+        width={windowSize.width}
+        height={windowSize.height}
+        blurRadius={Number.isFinite(glassBlur) && glassBlur > 0 ? glassBlur : 18}
+      >
+        {pic ? picComponent : themeComponent}
+      </GlassBackdropProvider>
     </>
   )
 }

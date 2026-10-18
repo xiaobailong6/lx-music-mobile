@@ -10,6 +10,7 @@ import { useStatusbarHeight } from '@/store/common/hook'
 import NewFolderModal, { type NewFolderType } from './NewFolderModal'
 import OpenStorageModal, { type OpenDirModalType } from './OpenStorageModal'
 import type { PathItem } from './ListItem'
+import { GlassSurface } from '@/components/common/Glass'
 
 
 export default memo(({
@@ -59,11 +60,11 @@ export default memo(({
 
   return (
     <>
-      <View style={{
+      <GlassSurface radius={0} style={{
         ...styles.header,
         height: scaleSizeH(50) + statusBarHeight,
         paddingTop: statusBarHeight,
-        backgroundColor: theme['c-content-background'],
+        // 背景交给 GlassSurface（液态玻璃主题下为真实模糊）
       }} onStartShouldSetResponder={() => true}>
         <View style={styles.titleContent}>
           <Text color={theme['c-primary-font']} numberOfLines={1}>{title}</Text>
@@ -80,7 +81,7 @@ export default memo(({
             <Icon name="available_updates" color={theme['c-primary-font']} size={22} />
           </TouchableOpacity>
         </View>
-      </View>
+      </GlassSurface>
       <OpenStorageModal ref={openDirModalTypeRef} onOpenDir={onOpenDir} />
       <NewFolderModal ref={newFolderTypeRef} onRefreshDir={onRefreshDir} />
     </>

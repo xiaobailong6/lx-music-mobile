@@ -1,9 +1,10 @@
 import { memo } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import Button from '@/components/common/Button'
 import Text from '@/components/common/Text'
 import { useTheme } from '@/store/theme/hook'
 import { useI18n } from '@/lang'
+import { GlassSurface } from '@/components/common/Glass'
 
 export default memo(({ onConfirm, onHide, dirOnly }: {
   onConfirm: () => void
@@ -14,7 +15,7 @@ export default memo(({ onConfirm, onHide, dirOnly }: {
   const theme = useTheme()
 
   return (
-    <View style={{ ...styles.footer, backgroundColor: theme['c-content-background'] }}>
+    <GlassSurface radius={0} style={styles.footer}>
       <Button style={{ ...styles.footerBtn, width: dirOnly ? '50%' : '100%' }} onPress={onHide}>
         <Text color={theme['c-button-font']}>{t('cancel')}</Text>
       </Button>
@@ -24,7 +25,7 @@ export default memo(({ onConfirm, onHide, dirOnly }: {
           </Button>
         : null
       }
-    </View>
+    </GlassSurface>
   )
 })
 

@@ -8,6 +8,7 @@ import { createStyle } from '@/utils/tools'
 import { useTheme } from '@/store/theme/hook'
 import Text from './Text'
 import { scaleSizeH, scaleSizeW } from '@/utils/pixelRatio'
+import GlassSurface from './Glass'
 
 const menuItemHeight = scaleSizeH(40)
 const menuItemWidth = scaleSizeW(100)
@@ -127,7 +128,7 @@ const Menu = ({
   // console.log(menuStyle)
   // console.log(menuItemStyle)
   return (
-    <View style={{ ...styles.menu, ...menuStyle, backgroundColor: theme['c-content-background'] }} onStartShouldSetResponder={() => true}>
+    <GlassSurface style={{ ...styles.menu, ...menuStyle }} radius={4} onStartShouldSetResponder={() => true}>
       <Animated.ScrollView keyboardShouldPersistTaps={'always'}>
         {
           menus.map((menu, index) => (
@@ -163,7 +164,7 @@ const Menu = ({
           ))
         }
       </Animated.ScrollView>
-    </View>
+    </GlassSurface>
   )
 }
 

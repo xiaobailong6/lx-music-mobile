@@ -9,6 +9,7 @@ import type { InitState } from '@/store/common/state'
 // import commonState from '@/store/common/state'
 import { exitApp, setNavActiveId } from '@/core/common'
 import { BorderWidths } from '@/theme'
+import { GlassSurface } from '@/components/common/Glass'
 import { useSettingValue } from '@/store/setting/hook'
 
 const NAV_WIDTH = 68
@@ -129,7 +130,7 @@ export default memo(() => {
   }
 
   return (
-    <View style={{ ...styles.container, borderRightColor: theme['c-border-background'] }}>
+    <GlassSurface radius={0} fallbackColor="transparent" style={{ ...styles.container, borderRightColor: theme['c-border-background'] }}>
       <Header />
       <ScrollView style={styles.menus}>
         <View style={styles.list}>
@@ -142,7 +143,7 @@ export default memo(() => {
       {
         showExitBtn ? <MenuItem id="nav_exit" icon="exit2" onPress={handlePress} /> : null
       }
-    </View>
+    </GlassSurface>
   )
 })
 

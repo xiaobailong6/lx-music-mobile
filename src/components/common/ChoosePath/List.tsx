@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef, forwardRef, useImperativeHandle } from 'react'
-import { View } from 'react-native'
 import { externalStorageDirectoryPath, readDir } from '@/utils/fs'
 import { createStyle, toast } from '@/utils/tools'
 // import { useTranslation } from '@/plugins/i18n'
@@ -8,8 +7,8 @@ import Modal, { type ModalType } from '@/components/common/Modal'
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
+import { GlassSurface } from '@/components/common/Glass'
 import { sizeFormate } from '@/utils'
-import { useTheme } from '@/store/theme/hook'
 import { type PathItem } from './components/ListItem'
 // import { getSelectedManagedFolder } from '@/utils/data'
 // let prevPath = externalStorageDirectoryPath
@@ -93,7 +92,6 @@ export default forwardRef<ListType, ListProps>(({
   const readOptions = useRef<ReadOptions>(initReadOptions as ReadOptions)
   const [isReading, setIsReading] = useState(false)
   const modalRef = useRef<ModalType>(null)
-  const theme = useTheme()
 
   useImperativeHandle(ref, () => ({
     show(title, dir = '', dirOnly = false, filter) {
@@ -174,7 +172,7 @@ export default forwardRef<ListType, ListProps>(({
 
   return (
     <Modal ref={modalRef} bgHide={false} statusBarPadding={false}>
-      <View style={{ ...styles.container, backgroundColor: theme['c-content-background'] }}>
+      <GlassSurface radius={0} style={styles.container}>
         <Header
           onRefreshDir={async(path) => readDir(path, readOptions.current.dirOnly, readOptions.current.filter, true)}
           onOpenDir={async(path) => readDir(path, readOptions.current.dirOnly, readOptions.current.filter, false, true)}
@@ -182,7 +180,7 @@ export default forwardRef<ListType, ListProps>(({
           path={path} />
         <Main list={list} toParentDir={toParentDir} onSetPath={onSetPath} loading={isReading} />
         <Footer onConfirm={handleConfirm} onHide={handleHide} dirOnly={readOptions.current.dirOnly} />
-      </View>
+      </GlassSurface>
     </Modal>
   )
 })

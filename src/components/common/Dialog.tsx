@@ -7,6 +7,7 @@ import { useKeyboard } from '@/utils/hooks'
 import { createStyle } from '@/utils/tools'
 import { useTheme } from '@/store/theme/hook'
 import Text from './Text'
+import GlassSurface from './Glass'
 import { scaleSizeH } from '@/utils/pixelRatio'
 
 const HEADER_HEIGHT = 20
@@ -100,13 +101,13 @@ export default forwardRef<DialogType, DialogProps>(({
   return (
     <Modal onHide={onHide} keyHide={keyHide} bgHide={bgHide} bgColor="rgba(50,50,50,.3)" ref={modalRef}>
       <View style={{ ...styles.centeredView, paddingBottom: keyboardShown ? keyboardHeight : 0 }}>
-        <View style={{ ...styles.modalView, height, backgroundColor: theme['c-content-background'] }} onStartShouldSetResponder={() => true}>
+        <GlassSurface style={{ ...styles.modalView, height }} radius={4} onStartShouldSetResponder={() => true}>
           <View style={{ ...styles.header, backgroundColor: theme['c-primary-light-100-alpha-100'] }}>
             <Text style={styles.title} size={13} color={theme['c-primary-light-1000']} numberOfLines={1}>{title}</Text>
             {closeBtnComponent}
           </View>
           {children}
-        </View>
+        </GlassSurface>
       </View>
     </Modal>
   )

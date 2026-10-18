@@ -5,8 +5,8 @@ const path = require('path')
 const { createThemeColors } = require('./utils')
 
 const defaultThemes = [
-  // 液态玻璃：仅此主题使用“半透明面板 + 壁纸透底”实现玻璃质感，其他主题不受影响。
-  // 想调玻璃浓度：改下面两个 alpha（0~1，越小越透），改完执行 npm run build:theme 重新生成
+  // 液态玻璃：启用真实背景模糊（GlassSurface 会复制壁纸并按面板位置裁切 + 模糊）。
+  // 想调效果：改下面的 ui-glass / glass-tint / glass-blur 等参数，改完执行 npm run build:theme 重新生成
   {
     id: 'liquid_glass',
     name: '液态玻璃',
@@ -15,11 +15,20 @@ const defaultThemes = [
       primary: 'rgb(125, 145, 180)',
       font: 'rgb(33, 33, 33)',
       'c-app-background': 'rgba(255, 255, 255, 0)',
-      'c-main-background': 'rgba(255, 255, 255, 0.6)',
-      'c-content-background': 'rgba(255, 255, 255, 0.85)',
+      // 内容区只留一层很淡的薄雾，让壁纸保持清晰，玻璃面板才能真的“模糊背后”
+      'c-main-background': 'rgba(255, 255, 255, 0.28)',
+      'c-content-background': 'rgba(255, 255, 255, 0.62)',
       'bg-image': 'myzcbg.jpg',
       'bg-image-position': 'center',
       'bg-image-size': 'cover',
+
+      // ===== 液态玻璃材质参数 =====
+      'ui-glass': '1',
+      'glass-tint': 'rgba(255, 255, 255, 0.34)',
+      'glass-blur': '18',
+      'glass-highlight': '0.42',
+      'glass-rim': 'rgba(255, 255, 255, 0.85)',
+      'glass-content-tint': 'rgba(255, 255, 255, 0.5)',
 
       'c-badge-primary': 'var(c-primary)',
       'c-badge-secondary': '#8fa8cc',

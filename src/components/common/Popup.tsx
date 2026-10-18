@@ -8,6 +8,7 @@ import { createStyle } from '@/utils/tools'
 import { useTheme } from '@/store/theme/hook'
 import Text from './Text'
 import { useStatusbarHeight } from '@/store/common/hook'
+import GlassSurface from './Glass'
 
 const styles = createStyle({
   centeredView: {
@@ -171,13 +172,13 @@ export default forwardRef<PopupType, PopupProps>(({
   return (
     <Modal onHide={onHide} keyHide={keyHide} bgHide={bgHide} bgColor="rgba(50,50,50,.2)" ref={modalRef}>
       <View style={{ ...styles.centeredView, ...centeredViewStyle, paddingBottom: keyboardShown ? keyboardHeight : 0 }}>
-        <View style={{ ...styles.modalView, ...modalViewStyle, backgroundColor: theme['c-content-background'] }} onStartShouldSetResponder={() => true}>
+        <GlassSurface style={{ ...styles.modalView, ...modalViewStyle }} radius={8} onStartShouldSetResponder={() => true}>
           <View style={styles.header}>
             <Text size={13} style={styles.title} numberOfLines={1}>{title}</Text>
             {closeBtnComponent}
           </View>
           {children}
-        </View>
+        </GlassSurface>
       </View>
     </Modal>
   )

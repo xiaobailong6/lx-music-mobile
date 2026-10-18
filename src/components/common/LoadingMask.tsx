@@ -4,6 +4,7 @@ import { useTheme } from '@/store/theme/hook'
 import { useI18n } from '@/lang'
 import { createStyle } from '@/utils/tools'
 import Loading from './Loading'
+import { GlassSurface } from '@/components/common/Glass'
 
 // interface LoadingMaskProps {
 
@@ -57,8 +58,10 @@ export default forwardRef<LoadingMaskType, {}>((props, ref) => {
 
 
   const maskComponent = useMemo(() => (
-    <Animated.View style={{ ...styles.container, backgroundColor: theme['c-main-background'], opacity: animFade }}>
-      <Loading size={25} label={t('list_loading')} />
+    <Animated.View style={{ ...styles.container, opacity: animFade }}>
+      <GlassSurface radius={0} tint={theme['glass-content-tint']} fallbackColor={theme['c-main-background']} style={styles.glass}>
+        <Loading size={25} label={t('list_loading')} />
+      </GlassSurface>
     </Animated.View>
   ), [animFade, t, theme])
 
@@ -73,6 +76,13 @@ const styles = createStyle({
     width: '100%',
     height: '100%',
     zIndex: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 10,
+  },
+  glass: {
+    flex: 1,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 10,

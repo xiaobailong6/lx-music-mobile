@@ -6,6 +6,8 @@ import { useNavActiveId, useStatusbarHeight } from '@/store/common/hook'
 import { useI18n } from '@/lang'
 import { createStyle } from '@/utils/tools'
 import Text from '@/components/common/Text'
+import GlassSurface from '@/components/common/Glass'
+import { useTheme } from '@/store/theme/hook'
 import StatusBar from '@/components/common/StatusBar'
 import { useSettingValue } from '@/store/setting/hook'
 import { scaleSizeH } from '@/utils/pixelRatio'
@@ -30,13 +32,19 @@ const LeftHeader = () => {
   const id = useNavActiveId()
   const t = useI18n()
   const statusBarHeight = useStatusbarHeight()
+  const theme = useTheme()
 
   return (
-    <View style={{
-      ...styles.container,
-      height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
-      paddingTop: statusBarHeight,
-    }}>
+    <GlassSurface
+      style={{
+        ...styles.container,
+        ...(theme['ui-glass'] === '1' ? styles.glassBar : {}),
+        height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
+        paddingTop: statusBarHeight,
+      }}
+      radius={0}
+      fallbackColor="transparent"
+    >
       <View style={styles.left}>
         <Text style={styles.leftTitle} size={18}>{t(id)}</Text>
       </View>
@@ -45,7 +53,7 @@ const LeftHeader = () => {
       {/* <TouchableOpacity style={styles.btn} onPress={openSetting}>
         <Icon style={{ ...styles.btnText, color: theme['c-font'] }} name="setting" size={styles.btnText.fontSize} />
       </TouchableOpacity> */}
-    </View>
+    </GlassSurface>
   )
 }
 
@@ -60,13 +68,19 @@ const RightHeader = () => {
   const t = useI18n()
   const id = useNavActiveId()
   const statusBarHeight = useStatusbarHeight()
+  const theme = useTheme()
 
   return (
-    <View style={{
-      ...styles.container,
-      height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
-      paddingTop: statusBarHeight,
-    }}>
+    <GlassSurface
+      style={{
+        ...styles.container,
+        ...(theme['ui-glass'] === '1' ? styles.glassBar : {}),
+        height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
+        paddingTop: statusBarHeight,
+      }}
+      radius={0}
+      fallbackColor="transparent"
+    >
       <View style={styles.left}>
         <Text style={styles.rightTitle} size={18}>{t(id)}</Text>
       </View>
@@ -74,7 +88,7 @@ const RightHeader = () => {
       {/* <TouchableOpacity style={styles.btn} onPress={openSetting}>
         <Icon style={{ ...styles.btnText, color: theme['c-font'] }} name="setting" size={styles.btnText.fontSize} />
       </TouchableOpacity> */}
-    </View>
+    </GlassSurface>
   )
 }
 
@@ -104,6 +118,12 @@ const styles = createStyle({
     alignItems: 'center',
     // backgroundColor: 'rgba(0,0,0,0.1)',
     zIndex: 10,
+  },
+  // 玻璃头部：底部圆角 + 阴影，让玻璃条浮在内容之上
+  glassBar: {
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
+    elevation: 6,
   },
   left: {
     flex: 1,

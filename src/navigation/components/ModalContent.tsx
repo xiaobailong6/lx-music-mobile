@@ -1,6 +1,7 @@
 import { View } from 'react-native'
 import { useTheme } from '@/store/theme/hook'
 import { createStyle } from '@/utils/tools'
+import { GlassSurface } from '@/components/common/Glass'
 // import { useWindowSize } from '@/utils/hooks'
 const HEADER_HEIGHT = 20
 
@@ -14,10 +15,10 @@ export default ({ children }: Props) => {
 
   return (
     <View style={{ ...styles.centeredView, backgroundColor: 'rgba(50,50,50,.3)' }}>
-      <View style={{ ...styles.modalView, backgroundColor: theme['c-content-background'] }}>
+      <GlassSurface radius={4} style={styles.modalView}>
         <View style={{ ...styles.header, backgroundColor: theme['c-primary-light-100-alpha-100'] }}></View>
         {children}
-      </View>
+      </GlassSurface>
     </View>
   )
 }

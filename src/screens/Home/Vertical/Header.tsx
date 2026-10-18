@@ -8,6 +8,7 @@ import { useI18n } from '@/lang'
 import { createStyle } from '@/utils/tools'
 import { Icon } from '@/components/common/Icon'
 import Text from '@/components/common/Text'
+import GlassSurface from '@/components/common/Glass'
 import StatusBar from '@/components/common/StatusBar'
 import { useSettingValue } from '@/store/setting/hook'
 import { scaleSizeH } from '@/utils/pixelRatio'
@@ -37,11 +38,16 @@ const LeftHeader = () => {
   }
 
   return (
-    <View style={{
-      ...styles.container,
-      height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
-      paddingTop: statusBarHeight,
-    }}>
+    <GlassSurface
+      style={{
+        ...styles.container,
+        ...(theme['ui-glass'] === '1' ? styles.glassBar : {}),
+        height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
+        paddingTop: statusBarHeight,
+      }}
+      radius={0}
+      fallbackColor="transparent"
+    >
       <View style={styles.left}>
         <TouchableOpacity style={styles.btn} onPress={openMenu}>
           <Icon color={theme['c-font']} name="menu" size={18} />
@@ -55,7 +61,7 @@ const LeftHeader = () => {
       {/* <TouchableOpacity style={styles.btn} onPress={openSetting}>
         <Icon style={{ ...styles.btnText, color: theme['c-font'] }} name="setting" size={styles.btnText.fontSize} />
       </TouchableOpacity> */}
-    </View>
+    </GlassSurface>
   )
 }
 
@@ -76,11 +82,16 @@ const RightHeader = () => {
     global.app_event.changeMenuVisible(true)
   }
   return (
-    <View style={{
-      ...styles.container,
-      height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
-      paddingTop: statusBarHeight,
-    }}>
+    <GlassSurface
+      style={{
+        ...styles.container,
+        ...(theme['ui-glass'] === '1' ? styles.glassBar : {}),
+        height: scaleSizeH(HEADER_HEIGHT) + statusBarHeight,
+        paddingTop: statusBarHeight,
+      }}
+      radius={0}
+      fallbackColor="transparent"
+    >
       <View style={styles.left}>
         <TouchableOpacity style={styles.titleBtn} onPress={openMenu}>
           <Text style={styles.rightTitle} size={18}>{t(id)}</Text>
@@ -93,7 +104,7 @@ const RightHeader = () => {
       {/* <TouchableOpacity style={styles.btn} onPress={openSetting}>
         <Icon style={{ ...styles.btnText, color: theme['c-font'] }} name="setting" size={styles.btnText.fontSize} />
       </TouchableOpacity> */}
-    </View>
+    </GlassSurface>
   )
 }
 
@@ -123,6 +134,12 @@ const styles = createStyle({
     alignItems: 'center',
     // backgroundColor: 'rgba(0,0,0,0.1)',
     zIndex: 10,
+  },
+  // 玻璃头部：底部圆角 + 一点阴影，让玻璃条从内容区“浮”起来
+  glassBar: {
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
+    elevation: 6,
   },
   left: {
     flex: 1,
