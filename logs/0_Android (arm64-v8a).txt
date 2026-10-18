@@ -1,0 +1,359 @@
+﻿2026-10-18T08:29:54.9492219Z Current runner version: '2.337.0'
+2026-10-18T08:29:54.9513863Z ##[group]Runner Image Provisioner
+2026-10-18T08:29:54.9514616Z Hosted Compute Agent
+2026-10-18T08:29:54.9515415Z Version: 20261012.601
+2026-10-18T08:29:54.9515902Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-18T08:29:54.9516467Z Build Date: 2026-10-12T17:48:21Z
+2026-10-18T08:29:54.9516989Z Worker ID: {b32d7f73-0f41-4e13-9ec6-f055da4543b4}
+2026-10-18T08:29:54.9517511Z Region: westus3
+2026-10-18T08:29:54.9517942Z Cloud: Azure
+2026-10-18T08:29:54.9518719Z ##[endgroup]
+2026-10-18T08:29:54.9519782Z ##[group]Operating System
+2026-10-18T08:29:54.9520225Z Ubuntu
+2026-10-18T08:29:54.9520693Z 24.04.5
+2026-10-18T08:29:54.9521046Z LTS
+2026-10-18T08:29:54.9521470Z ##[endgroup]
+2026-10-18T08:29:54.9521848Z ##[group]Runner Image
+2026-10-18T08:29:54.9522266Z Image: ubuntu-24.04
+2026-10-18T08:29:54.9522771Z Version: 20261012.334.1
+2026-10-18T08:29:54.9523695Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-18T08:29:54.9524666Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-18T08:29:54.9525556Z ##[endgroup]
+2026-10-18T08:29:54.9526367Z ##[group]GITHUB_TOKEN Permissions
+2026-10-18T08:29:54.9528000Z Contents: read
+2026-10-18T08:29:54.9528443Z Metadata: read
+2026-10-18T08:29:54.9528876Z Packages: read
+2026-10-18T08:29:54.9529316Z ##[endgroup]
+2026-10-18T08:29:54.9530902Z Secret source: Actions
+2026-10-18T08:29:54.9531609Z Cache mode: write
+2026-10-18T08:29:54.9532090Z Prepare workflow directory
+2026-10-18T08:29:54.9823339Z Prepare all required actions
+2026-10-18T08:29:54.9859004Z Getting action download info
+2026-10-18T08:29:55.2608714Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-18T08:29:55.5997802Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-18T08:29:55.7997128Z Complete job name: Android (arm64-v8a)
+2026-10-18T08:29:55.8502873Z ##[group]Run actions/checkout@v4
+2026-10-18T08:29:55.8503340Z with:
+2026-10-18T08:29:55.8503633Z   repository: xiaobailong6/lx-music-mobile
+2026-10-18T08:29:55.8506218Z   token: ***
+2026-10-18T08:29:55.8506496Z   ssh-strict: true
+2026-10-18T08:29:55.8506777Z   ssh-user: git
+2026-10-18T08:29:55.8507064Z   persist-credentials: true
+2026-10-18T08:29:55.8507385Z   clean: true
+2026-10-18T08:29:55.8507669Z   sparse-checkout-cone-mode: true
+2026-10-18T08:29:55.8508000Z   fetch-depth: 1
+2026-10-18T08:29:55.8508299Z   fetch-tags: false
+2026-10-18T08:29:55.8508587Z   show-progress: true
+2026-10-18T08:29:55.8508870Z   lfs: false
+2026-10-18T08:29:55.8509136Z   submodules: false
+2026-10-18T08:29:55.8509422Z   set-safe-directory: true
+2026-10-18T08:29:55.8509755Z   allow-unsafe-pr-checkout: false
+2026-10-18T08:29:55.8510189Z ##[endgroup]
+2026-10-18T08:29:55.9235445Z Syncing repository: xiaobailong6/lx-music-mobile
+2026-10-18T08:29:55.9237310Z ##[group]Getting Git version info
+2026-10-18T08:29:55.9238193Z Working directory is '/home/runner/work/lx-music-mobile/lx-music-mobile'
+2026-10-18T08:29:55.9239319Z [command]/usr/bin/git version
+2026-10-18T08:29:55.9326771Z git version 2.55.0
+2026-10-18T08:29:55.9373550Z ##[endgroup]
+2026-10-18T08:29:55.9385549Z Temporarily overriding HOME='/home/runner/work/_temp/a5109c0c-e30d-4553-9eed-8c91e79a4dd0' before making global git config changes
+2026-10-18T08:29:55.9387007Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-18T08:29:55.9389908Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/lx-music-mobile/lx-music-mobile
+2026-10-18T08:29:55.9441706Z Deleting the contents of '/home/runner/work/lx-music-mobile/lx-music-mobile'
+2026-10-18T08:29:55.9446164Z ##[group]Initializing the repository
+2026-10-18T08:29:55.9448840Z [command]/usr/bin/git init /home/runner/work/lx-music-mobile/lx-music-mobile
+2026-10-18T08:29:55.9558753Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-18T08:29:55.9560180Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-18T08:29:55.9562338Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-18T08:29:55.9563488Z hint: call:
+2026-10-18T08:29:55.9563878Z hint:
+2026-10-18T08:29:55.9564389Z hint: 	git config --global init.defaultBranch <name>
+2026-10-18T08:29:55.9565111Z hint:
+2026-10-18T08:29:55.9565704Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-18T08:29:55.9566642Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-18T08:29:55.9567375Z hint:
+2026-10-18T08:29:55.9567810Z hint: 	git branch -m <name>
+2026-10-18T08:29:55.9568275Z hint:
+2026-10-18T08:29:55.9568853Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-18T08:29:55.9569888Z Initialized empty Git repository in /home/runner/work/lx-music-mobile/lx-music-mobile/.git/
+2026-10-18T08:29:55.9571703Z [command]/usr/bin/git remote add origin https://github.com/xiaobailong6/lx-music-mobile
+2026-10-18T08:29:55.9621002Z ##[endgroup]
+2026-10-18T08:29:55.9624078Z ##[group]Disabling automatic garbage collection
+2026-10-18T08:29:55.9624727Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-18T08:29:55.9654082Z ##[endgroup]
+2026-10-18T08:29:55.9654789Z ##[group]Setting up auth
+2026-10-18T08:29:55.9659558Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-18T08:29:55.9690694Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-18T08:29:56.0031469Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-18T08:29:56.0068627Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-18T08:29:56.0282656Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-18T08:29:56.0319689Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-18T08:29:56.0530368Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-18T08:29:56.0568405Z ##[endgroup]
+2026-10-18T08:29:56.0569040Z ##[group]Fetching the repository
+2026-10-18T08:29:56.0575882Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ff58105afa3b40f29282d892ca33ea9ca3110b11:refs/remotes/origin/master
+2026-10-18T08:29:57.1360250Z From https://github.com/xiaobailong6/lx-music-mobile
+2026-10-18T08:29:57.1361158Z  * [new ref]         ff58105afa3b40f29282d892ca33ea9ca3110b11 -> origin/master
+2026-10-18T08:29:57.1387323Z ##[endgroup]
+2026-10-18T08:29:57.1388393Z ##[group]Determining the checkout info
+2026-10-18T08:29:57.1389367Z ##[endgroup]
+2026-10-18T08:29:57.1389935Z [command]/usr/bin/git sparse-checkout disable
+2026-10-18T08:29:57.1429993Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-18T08:29:57.1467613Z ##[group]Checking out the ref
+2026-10-18T08:29:57.1472773Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2026-10-18T08:29:57.1986441Z Reset branch 'master'
+2026-10-18T08:29:57.1987682Z branch 'master' set up to track 'origin/master'.
+2026-10-18T08:29:57.1995508Z ##[endgroup]
+2026-10-18T08:29:57.2035997Z [command]/usr/bin/git log -1 --format=%H
+2026-10-18T08:29:57.2059641Z ff58105afa3b40f29282d892ca33ea9ca3110b11
+2026-10-18T08:29:57.2362386Z Prepare all required actions
+2026-10-18T08:29:57.2365262Z Getting action download info
+2026-10-18T08:29:57.3691563Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-18T08:29:57.4721116Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+2026-10-18T08:29:58.3317654Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-10-18T08:29:58.4729582Z ##[group]Run ./.github/actions/setup
+2026-10-18T08:29:58.4729818Z ##[endgroup]
+2026-10-18T08:29:58.4770350Z ##[start-action display=Setup Node.js;id=__self.__actions_setup-node]
+2026-10-18T08:29:58.4838886Z ##[group]Run actions/setup-node@v4
+2026-10-18T08:29:58.4839100Z with:
+2026-10-18T08:29:58.4839277Z   node-version-file: .nvmrc
+2026-10-18T08:29:58.4839457Z   always-auth: false
+2026-10-18T08:29:58.4839622Z   check-latest: false
+2026-10-18T08:29:58.4841161Z   token: ***
+2026-10-18T08:29:58.4841358Z ##[endgroup]
+2026-10-18T08:29:58.5797689Z Node version file is not JSON file
+2026-10-18T08:29:58.5798337Z Resolved .nvmrc as 18
+2026-10-18T08:29:58.5839797Z Attempting to download 18...
+2026-10-18T08:29:58.5914036Z (node:2089) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-18T08:29:58.5914626Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-18T08:29:59.8026159Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+2026-10-18T08:30:00.2565492Z Extracting ...
+2026-10-18T08:30:00.2650416Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/fed1db1a-96a9-426f-a0be-a901822e5270 -f /home/runner/work/_temp/6f244e79-860a-4812-8c25-59ea1ed93482
+2026-10-18T08:30:01.0029658Z Adding to the cache ...
+2026-10-18T08:30:02.4570264Z ##[group]Environment details
+2026-10-18T08:30:02.6107612Z node: v18.20.8
+2026-10-18T08:30:02.6107920Z npm: 10.8.2
+2026-10-18T08:30:02.6108219Z yarn: 1.22.22
+2026-10-18T08:30:02.6108687Z ##[endgroup]
+2026-10-18T08:30:02.6224075Z ##[end-action id=__self.__actions_setup-node;outcome=success;conclusion=success;duration_ms=4145]
+2026-10-18T08:30:02.6226451Z ##[start-action display=Setup Java Env;id=__self.__actions_setup-java]
+2026-10-18T08:30:02.6267260Z ##[group]Run actions/setup-java@v4
+2026-10-18T08:30:02.6267426Z with:
+2026-10-18T08:30:02.6267563Z   distribution: microsoft
+2026-10-18T08:30:02.6267705Z   java-version: 17
+2026-10-18T08:30:02.6267832Z   cache: gradle
+2026-10-18T08:30:02.6267958Z   java-package: jdk
+2026-10-18T08:30:02.6268090Z   check-latest: false
+2026-10-18T08:30:02.6268218Z   server-id: github
+2026-10-18T08:30:02.6268354Z   server-username: GITHUB_ACTOR
+2026-10-18T08:30:02.6268509Z   server-password: GITHUB_TOKEN
+2026-10-18T08:30:02.6268662Z   overwrite-settings: true
+2026-10-18T08:30:02.6268805Z   job-status: success
+2026-10-18T08:30:02.6270294Z   token: ***
+2026-10-18T08:30:02.6270439Z ##[endgroup]
+2026-10-18T08:30:02.7338153Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+2026-10-18T08:30:02.7339092Z ##[group]Installed distributions
+2026-10-18T08:30:02.7346712Z Trying to resolve the latest version from remote
+2026-10-18T08:30:02.7409490Z (node:2126) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-18T08:30:02.7410335Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-18T08:30:03.1488448Z Resolved latest version as 17.0.19
+2026-10-18T08:30:03.1488733Z Trying to download...
+2026-10-18T08:30:03.1489124Z Downloading Java 17.0.19 (Microsoft) from https://aka.ms/download-jdk/microsoft-jdk-17.0.19-linux-x64.tar.gz ...
+2026-10-18T08:30:04.3687855Z Extracting Java archive...
+2026-10-18T08:30:04.3783290Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/154aa509-73c5-4fa1-bcde-01d189575876 -f /home/runner/work/_temp/645366ff-5ecb-409b-8043-6d8da63618ea
+2026-10-18T08:30:09.1183671Z Java 17.0.19 was downloaded
+2026-10-18T08:30:09.1184140Z Setting Java 17.0.19 as the default
+2026-10-18T08:30:09.1189517Z Creating toolchains.xml for JDK version 17 from microsoft
+2026-10-18T08:30:09.1235488Z Writing to /home/runner/.m2/toolchains.xml
+2026-10-18T08:30:09.1235852Z 
+2026-10-18T08:30:09.1236002Z Java configuration:
+2026-10-18T08:30:09.1236239Z   Distribution: microsoft
+2026-10-18T08:30:09.1236479Z   Version: 17.0.19
+2026-10-18T08:30:09.1236802Z   Path: /opt/hostedtoolcache/Java_Microsoft_jdk/17.0.19/x64
+2026-10-18T08:30:09.1237035Z 
+2026-10-18T08:30:09.1237365Z ##[endgroup]
+2026-10-18T08:30:09.1241552Z Creating settings.xml with server-id: github
+2026-10-18T08:30:09.1246776Z Writing to /home/runner/.m2/settings.xml
+2026-10-18T08:30:09.3776855Z gradle cache is not found
+2026-10-18T08:30:09.3907354Z ##[end-action id=__self.__actions_setup-java;outcome=success;conclusion=success;duration_ms=6768]
+2026-10-18T08:30:09.3909563Z ##[start-action display=Get npm cache directory;id=__self.npm-cache-dir]
+2026-10-18T08:30:09.3935958Z ##[group]Run echo "cachedir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+2026-10-18T08:30:09.3936426Z [36;1mecho "cachedir=$(npm config get cache)" >> ${GITHUB_OUTPUT}[0m
+2026-10-18T08:30:09.4180590Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-18T08:30:09.4180835Z env:
+2026-10-18T08:30:09.4181021Z   JAVA_HOME: /opt/hostedtoolcache/Java_Microsoft_jdk/17.0.19/x64
+2026-10-18T08:30:09.4181281Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Microsoft_jdk/17.0.19/x64
+2026-10-18T08:30:09.4181519Z ##[endgroup]
+2026-10-18T08:30:09.5086311Z ##[end-action id=__self.npm-cache-dir;outcome=success;conclusion=success;duration_ms=117]
+2026-10-18T08:30:09.5090092Z ##[start-action display=Cache node modules;id=__self.cache-npm]
+2026-10-18T08:30:09.5516848Z ##[group]Run actions/cache@v4
+2026-10-18T08:30:09.5517011Z with:
+2026-10-18T08:30:09.5517159Z   path: /home/runner/.npm
+2026-10-18T08:30:09.5517406Z   key: Linux-npm-cache-bba227f84fe8558978de822986a3d6981996a7dea488e6e6b0c2d755e87e7caa
+2026-10-18T08:30:09.5517689Z   restore-keys: Linux-npm-cache-
+
+2026-10-18T08:30:09.5517848Z   enableCrossOsArchive: false
+2026-10-18T08:30:09.5518010Z   fail-on-cache-miss: false
+2026-10-18T08:30:09.5518153Z   lookup-only: false
+2026-10-18T08:30:09.5518279Z   save-always: false
+2026-10-18T08:30:09.5518406Z env:
+2026-10-18T08:30:09.5518567Z   JAVA_HOME: /opt/hostedtoolcache/Java_Microsoft_jdk/17.0.19/x64
+2026-10-18T08:30:09.5518815Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Microsoft_jdk/17.0.19/x64
+2026-10-18T08:30:09.5519019Z ##[endgroup]
+2026-10-18T08:30:09.6480788Z (node:2167) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-18T08:30:09.6481553Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-18T08:30:09.8411172Z Cache not found for input keys: Linux-npm-cache-bba227f84fe8558978de822986a3d6981996a7dea488e6e6b0c2d755e87e7caa, Linux-npm-cache-
+2026-10-18T08:30:09.8471012Z ##[end-action id=__self.cache-npm;outcome=success;conclusion=success;duration_ms=338]
+2026-10-18T08:30:09.8473341Z ##[start-action display=Install dependencies;id=__self.__run]
+2026-10-18T08:30:09.8490449Z ##[group]Run npm ci
+2026-10-18T08:30:09.8490640Z [36;1mnpm ci[0m
+2026-10-18T08:30:09.8546086Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-18T08:30:09.8546298Z env:
+2026-10-18T08:30:09.8546476Z   JAVA_HOME: /opt/hostedtoolcache/Java_Microsoft_jdk/17.0.19/x64
+2026-10-18T08:30:09.8546734Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Microsoft_jdk/17.0.19/x64
+2026-10-18T08:30:09.8546941Z ##[endgroup]
+2026-10-18T08:30:13.2673743Z npm error code EUSAGE
+2026-10-18T08:30:13.2674272Z npm error
+2026-10-18T08:30:13.2675550Z npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+2026-10-18T08:30:13.2676115Z npm error
+2026-10-18T08:30:13.2676313Z npm error Missing: eslint@8.57.1 from lock file
+2026-10-18T08:30:13.2676773Z npm error Missing: @eslint-community/eslint-utils@4.10.1 from lock file
+2026-10-18T08:30:13.2677415Z npm error Missing: @eslint-community/regexpp@4.12.2 from lock file
+2026-10-18T08:30:13.2677846Z npm error Missing: @eslint/eslintrc@2.1.4 from lock file
+2026-10-18T08:30:13.2678240Z npm error Missing: @eslint/js@8.57.1 from lock file
+2026-10-18T08:30:13.2678681Z npm error Missing: @humanwhocodes/config-array@0.13.0 from lock file
+2026-10-18T08:30:13.2679342Z npm error Missing: @humanwhocodes/module-importer@1.0.1 from lock file
+2026-10-18T08:30:13.2679820Z npm error Missing: @ungap/structured-clone@1.4.0 from lock file
+2026-10-18T08:30:13.2680213Z npm error Missing: ajv@6.15.0 from lock file
+2026-10-18T08:30:13.2680577Z npm error Missing: doctrine@3.0.0 from lock file
+2026-10-18T08:30:13.2680967Z npm error Missing: eslint-scope@7.2.2 from lock file
+2026-10-18T08:30:13.2681379Z npm error Missing: eslint-visitor-keys@3.4.3 from lock file
+2026-10-18T08:30:13.2681758Z npm error Missing: espree@9.6.1 from lock file
+2026-10-18T08:30:13.2682109Z npm error Missing: esquery@1.7.0 from lock file
+2026-10-18T08:30:13.2682495Z npm error Missing: fast-deep-equal@3.1.3 from lock file
+2026-10-18T08:30:13.2682894Z npm error Missing: file-entry-cache@6.0.1 from lock file
+2026-10-18T08:30:13.2683275Z npm error Missing: glob-parent@6.0.2 from lock file
+2026-10-18T08:30:13.2683635Z npm error Missing: globals@13.24.0 from lock file
+2026-10-18T08:30:13.2683998Z npm error Missing: graphemer@1.4.0 from lock file
+2026-10-18T08:30:13.2684371Z npm error Missing: is-path-inside@3.0.3 from lock file
+2026-10-18T08:30:13.2684737Z npm error Missing: js-yaml@4.3.2 from lock file
+2026-10-18T08:30:13.2685234Z npm error Missing: json-stable-stringify-without-jsonify@1.0.1 from lock file
+2026-10-18T08:30:13.2685517Z npm error Missing: levn@0.4.1 from lock file
+2026-10-18T08:30:13.2685741Z npm error Missing: lodash.merge@4.6.2 from lock file
+2026-10-18T08:30:13.2686003Z npm error Missing: minimatch@3.1.5 from lock file
+2026-10-18T08:30:13.2686238Z npm error Missing: natural-compare@1.4.0 from lock file
+2026-10-18T08:30:13.2686575Z npm error Missing: optionator@0.9.4 from lock file
+2026-10-18T08:30:13.2686942Z npm error Missing: text-table@0.2.0 from lock file
+2026-10-18T08:30:13.2687342Z npm error Missing: eslint-visitor-keys@3.4.3 from lock file
+2026-10-18T08:30:13.2687790Z npm error Missing: import-fresh@3.3.1 from lock file
+2026-10-18T08:30:13.2688155Z npm error Missing: minimatch@3.1.5 from lock file
+2026-10-18T08:30:13.2688546Z npm error Missing: strip-json-comments@3.1.1 from lock file
+2026-10-18T08:30:13.2688996Z npm error Missing: @humanwhocodes/object-schema@2.0.3 from lock file
+2026-10-18T08:30:13.2689416Z npm error Missing: minimatch@3.1.5 from lock file
+2026-10-18T08:30:13.2689869Z npm error Missing: fast-json-stable-stringify@2.1.0 from lock file
+2026-10-18T08:30:13.2690360Z npm error Missing: json-schema-traverse@0.4.1 from lock file
+2026-10-18T08:30:13.2690773Z npm error Missing: uri-js@4.4.1 from lock file
+2026-10-18T08:30:13.2691132Z npm error Missing: eslint-plugin-import@2.32.0 from lock file
+2026-10-18T08:30:13.2691394Z npm error Missing: eslint-plugin-n@16.6.2 from lock file
+2026-10-18T08:30:13.2691660Z npm error Missing: eslint-plugin-promise@6.6.0 from lock file
+2026-10-18T08:30:13.2691956Z npm error Missing: @typescript-eslint/eslint-plugin@6.21.0 from lock file
+2026-10-18T08:30:13.2692269Z npm error Missing: @typescript-eslint/type-utils@6.21.0 from lock file
+2026-10-18T08:30:13.2692565Z npm error Missing: @typescript-eslint/utils@6.21.0 from lock file
+2026-10-18T08:30:13.2692812Z npm error Missing: semver@7.8.5 from lock file
+2026-10-18T08:30:13.2693052Z npm error Missing: @types/json-schema@7.0.15 from lock file
+2026-10-18T08:30:13.2693300Z npm error Missing: @types/semver@7.8.0 from lock file
+2026-10-18T08:30:13.2693661Z npm error Missing: semver@7.8.5 from lock file
+2026-10-18T08:30:13.2693878Z npm error Missing: @rtsao/scc@1.1.0 from lock file
+2026-10-18T08:30:13.2694151Z npm error Missing: array.prototype.findlastindex@1.2.6 from lock file
+2026-10-18T08:30:13.2694406Z npm error Missing: debug@3.2.7 from lock file
+2026-10-18T08:30:13.2694719Z npm error Missing: doctrine@2.1.0 from lock file
+2026-10-18T08:30:13.2694986Z npm error Missing: eslint-import-resolver-node@0.3.10 from lock file
+2026-10-18T08:30:13.2697069Z npm error Missing: eslint-module-utils@2.14.0 from lock file
+2026-10-18T08:30:13.2697317Z npm error Missing: minimatch@3.1.5 from lock file
+2026-10-18T08:30:13.2697551Z npm error Missing: object.groupby@1.0.3 from lock file
+2026-10-18T08:30:13.2697799Z npm error Missing: tsconfig-paths@3.15.0 from lock file
+2026-10-18T08:30:13.2698025Z npm error Missing: debug@3.2.7 from lock file
+2026-10-18T08:30:13.2698253Z npm error Missing: resolve@2.0.0-next.7 from lock file
+2026-10-18T08:30:13.2698474Z npm error Missing: debug@3.2.7 from lock file
+2026-10-18T08:30:13.2698695Z npm error Missing: builtins@5.1.0 from lock file
+2026-10-18T08:30:13.2698941Z npm error Missing: eslint-plugin-es-x@7.8.0 from lock file
+2026-10-18T08:30:13.2699211Z npm error Missing: get-tsconfig@4.14.3 from lock file
+2026-10-18T08:30:13.2699551Z npm error Missing: is-builtin-module@3.2.1 from lock file
+2026-10-18T08:30:13.2699792Z npm error Missing: minimatch@3.1.5 from lock file
+2026-10-18T08:30:13.2700007Z npm error Missing: semver@7.8.5 from lock file
+2026-10-18T08:30:13.2700221Z npm error Missing: semver@7.8.5 from lock file
+2026-10-18T08:30:13.2700465Z npm error Missing: eslint-compat-utils@0.5.1 from lock file
+2026-10-18T08:30:13.2700701Z npm error Missing: semver@7.8.5 from lock file
+2026-10-18T08:30:13.2700919Z npm error Missing: acorn-jsx@5.3.2 from lock file
+2026-10-18T08:30:13.2701163Z npm error Missing: eslint-visitor-keys@3.4.3 from lock file
+2026-10-18T08:30:13.2701406Z npm error Missing: flat-cache@3.2.0 from lock file
+2026-10-18T08:30:13.2701629Z npm error Missing: flatted@3.4.4 from lock file
+2026-10-18T08:30:13.2701843Z npm error Missing: keyv@4.5.4 from lock file
+2026-10-18T08:30:13.2702078Z npm error Missing: resolve-pkg-maps@1.0.0 from lock file
+2026-10-18T08:30:13.2702312Z npm error Missing: type-fest@0.20.2 from lock file
+2026-10-18T08:30:13.2702549Z npm error Missing: parent-module@1.0.1 from lock file
+2026-10-18T08:30:13.2702807Z npm error Missing: resolve-from@4.0.0 from lock file
+2026-10-18T08:30:13.2703048Z npm error Missing: builtin-modules@3.3.0 from lock file
+2026-10-18T08:30:13.2703276Z npm error Missing: argparse@2.0.1 from lock file
+2026-10-18T08:30:13.2703503Z npm error Missing: json-buffer@3.0.1 from lock file
+2026-10-18T08:30:13.2703730Z npm error Missing: prelude-ls@1.2.1 from lock file
+2026-10-18T08:30:13.2703953Z npm error Missing: type-check@0.4.0 from lock file
+2026-10-18T08:30:13.2704175Z npm error Missing: deep-is@0.1.4 from lock file
+2026-10-18T08:30:13.2704411Z npm error Missing: fast-levenshtein@2.0.6 from lock file
+2026-10-18T08:30:13.2704649Z npm error Missing: word-wrap@1.2.5 from lock file
+2026-10-18T08:30:13.2704869Z npm error Missing: callsites@3.1.0 from lock file
+2026-10-18T08:30:13.2705279Z npm error Missing: @types/json5@0.0.29 from lock file
+2026-10-18T08:30:13.2705500Z npm error Missing: json5@1.0.2 from lock file
+2026-10-18T08:30:13.2705719Z npm error Missing: strip-bom@3.0.0 from lock file
+2026-10-18T08:30:13.2705936Z npm error Missing: punycode@2.3.1 from lock file
+2026-10-18T08:30:13.2706171Z npm error Missing: brace-expansion@1.1.21 from lock file
+2026-10-18T08:30:13.2706419Z npm error Missing: brace-expansion@1.1.21 from lock file
+2026-10-18T08:30:13.2706663Z npm error Missing: brace-expansion@1.1.21 from lock file
+2026-10-18T08:30:13.2706909Z npm error Missing: brace-expansion@1.1.21 from lock file
+2026-10-18T08:30:13.2707150Z npm error Missing: brace-expansion@1.1.21 from lock file
+2026-10-18T08:30:13.2707339Z npm error
+2026-10-18T08:30:13.2707497Z npm error Clean install a project
+2026-10-18T08:30:13.2707654Z npm error
+2026-10-18T08:30:13.2707923Z npm error Usage:
+2026-10-18T08:30:13.2708081Z npm error npm ci
+2026-10-18T08:30:13.2708208Z npm error
+2026-10-18T08:30:13.2708338Z npm error Options:
+2026-10-18T08:30:13.2708610Z npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+2026-10-18T08:30:13.2709079Z npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+2026-10-18T08:30:13.2709468Z npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+2026-10-18T08:30:13.2709870Z npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+2026-10-18T08:30:13.2710167Z npm error [--no-bin-links] [--no-fund] [--dry-run]
+2026-10-18T08:30:13.2710481Z npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+2026-10-18T08:30:13.2710820Z npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+2026-10-18T08:30:13.2711041Z npm error
+2026-10-18T08:30:13.2711255Z npm error aliases: clean-install, ic, install-clean, isntall-clean
+2026-10-18T08:30:13.2711463Z npm error
+2026-10-18T08:30:13.2711616Z npm error Run "npm help ci" for more info
+2026-10-18T08:30:13.2711982Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-18T08_30_09_906Z-debug-0.log
+2026-10-18T08:30:13.2872156Z ##[error]Process completed with exit code 1.
+2026-10-18T08:30:13.2878492Z ##[end-action id=__self.__run;outcome=failure;conclusion=failure;duration_ms=3440]
+2026-10-18T08:30:13.2984183Z Post job cleanup.
+2026-10-18T08:30:13.2987444Z ##[start-action display=Cache node modules;id=__bdfdcb1e-87ab-4591-8d24-c93f60fe28ff.cache-npm]
+2026-10-18T08:30:13.2989541Z ##[end-action id=__bdfdcb1e-87ab-4591-8d24-c93f60fe28ff.cache-npm;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-18T08:30:13.2990698Z ##[start-action display=Setup Java Env;id=__bdfdcb1e-87ab-4591-8d24-c93f60fe28ff.__actions_setup-java]
+2026-10-18T08:30:13.3097008Z Post job cleanup.
+2026-10-18T08:30:13.4030742Z (node:2199) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-18T08:30:13.4031572Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-18T08:30:13.4126750Z ##[end-action id=__bdfdcb1e-87ab-4591-8d24-c93f60fe28ff.__actions_setup-java;outcome=success;conclusion=success;duration_ms=113]
+2026-10-18T08:30:13.4129132Z ##[start-action display=Setup Node.js;id=__bdfdcb1e-87ab-4591-8d24-c93f60fe28ff.__actions_setup-node]
+2026-10-18T08:30:13.4131253Z ##[end-action id=__bdfdcb1e-87ab-4591-8d24-c93f60fe28ff.__actions_setup-node;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-18T08:30:13.4432499Z Post job cleanup.
+2026-10-18T08:30:13.5005367Z [command]/usr/bin/git version
+2026-10-18T08:30:13.5038965Z git version 2.55.0
+2026-10-18T08:30:13.5063789Z Temporarily overriding HOME='/home/runner/work/_temp/edadfb64-b6f9-4571-a57a-1c01c080619e' before making global git config changes
+2026-10-18T08:30:13.5064617Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-18T08:30:13.5067937Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/lx-music-mobile/lx-music-mobile
+2026-10-18T08:30:13.5431291Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-18T08:30:13.5472844Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-18T08:30:13.5683153Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-18T08:30:13.5711407Z http.https://github.com/.extraheader
+2026-10-18T08:30:13.5720502Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-18T08:30:13.6507243Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-18T08:30:13.6724507Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-18T08:30:13.6756168Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-18T08:30:13.7072019Z Cleaning up orphan processes
+2026-10-18T08:30:13.7299621Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache@v4, actions/checkout@v4, actions/setup-java@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
