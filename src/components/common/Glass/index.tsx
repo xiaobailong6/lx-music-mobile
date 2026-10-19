@@ -18,6 +18,8 @@ import {
   type StyleProp,
   type ViewProps,
   type ViewStyle,
+  NativeModules,
+  requireNativeComponent,
 } from 'react-native'
 import { useTheme } from '@/store/theme/hook'
 
@@ -37,6 +39,37 @@ const DOWNSCALE = 2
 
 /** 顶部高光带的分层数：用多条不同透明度的色带模拟线性渐变（RN 无原生渐变） */
 const HIGHLIGHT_BANDS = 6
+
+/** 原生玻璃能力探测：blur 需要 API31+，refraction 需要 API33+ */
+const LXGlass = (NativeModules as {
+  LXGlass?: { sdkInt: number, blur: boolean, refraction: boolean }
+}).LXGlass
+const NativeGlassView = LXGlass?.blur
+  ? requireNativeComponent<Record<string, unknown>>('LXGlassView')
+  : null
+
+/**
+ * 把 RN 的 ImageSource 转成原生能解析的形式。
+ * require() 出来的资源在 release 包里 uri 是 drawable 资源名，不能当路径用，所以要分开传。
+ */
+const resolveNativeSource = (source?: ImageSourcePropType): Record<string, unknown> | null => {
+  if (!source) return null
+  const resolved = (Image as unknown as {
+    resolveAssetSource?: (s: ImageSourcePropType) => { uri?: string } | null
+  }).resolveAssetSource?.(source)
+  const uri = resolved?.uri ?? (typeof source === 'object' && source !== null && 'uri' in source
+    ? (source as { uri?: string }).uri
+    : undefined)
+  if (!uri) return null
+  const headers = typeof source === 'object' && source !== null && 'headers' in source
+    ? (source as { headers?: Record<string, string> }).headers
+    : undefined
+  const result: Record<string, unknown> = {}
+  if (headers) result.sourceHeaders = JSON.stringify(headers)
+  if (/^(https?|file|content):\/\//.test(uri) || uri.startsWith('/')) result.sourceUri = uri
+  else result.sourceResource = uri
+  return result
+}
 
 export interface GlassBackdropConfig {
   /** 是否启用玻璃效果（由主题 token `ui-glass` 驱动） */
@@ -247,6 +280,31 @@ export const GlassSurface = forwardRef<View, GlassSurfaceProps>(({
 
   const rimColor = theme['glass-rim'] ?? 'rgba(255, 255, 255, 0.6)'
 
+  // —— 原生玻璃（方案 A）——
+  // 原生可用时改用 LXGlassView 渲染：真 Gauss 模糊（RenderEffect）+ API33 的 AGSL 边缘折射，
+  // RN 只负责把「本视图在壁纸坐标系里的位置」传过去，不再自己搬整张壁纸。
+  const nativeProps = useMemo(
+    () => (enabled && NativeGlassView && backdrop ? resolveNativeSource(backdrop.source) : null),
+    [enabled, backdrop],
+  )
+  const nativeEl = NativeGlassView && nativeProps && rect && backdrop
+    ? <NativeGlassView
+        pointerEvents="none"
+        style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}
+        {...nativeProps}
+        cropX={rect.x}
+        cropY={rect.y}
+        boxWidth={backdrop.width}
+        boxHeight={backdrop.height}
+        blurRadius={resolvedBlur}
+        tintColor={resolvedTint}
+        highlight={resolvedHighlight}
+        rimColor={rim ? rimColor : 'transparent'}
+        cornerRadius={radius}
+        refraction={0.7}
+      />
+    : null
+
   return (
     <View
       ref={innerRef}
@@ -262,7 +320,7 @@ export const GlassSurface = forwardRef<View, GlassSurfaceProps>(({
       {...props}
     >
       {
-        backdropStyle && backdrop?.source
+        !nativeEl && backdropStyle && backdrop?.source
           ? <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
               <Image
                 source={backdrop.source}
@@ -291,6 +349,7 @@ export const GlassSurface = forwardRef<View, GlassSurfaceProps>(({
             </View>
           : null
       }
+      {nativeEl}
       {children}
     </View>
   )
